@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kế Hoạch Làm Việc Dr.MOA - Bản Chuẩn A4 Dọc</title>
+    <title>Kế Hoạch Làm Việc Dr.MOA - Bản Công Thức Chuẩn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-        /* ================= GIAO DIỆN MÀN HÌNH (TỐI ƯU MOBILE & DESKTOP) ================= */
+        /* ================= GIAO DIỆN MÀN HÌNH ================= */
         body { background-color: #f3f4f6; padding: 10px; font-family: 'Times New Roman', Times, serif; color: #000; font-size: 11.5px; }
         .page-wrapper { background: #fff; padding: 15px 20px; border-radius: 4px; max-width: 800px; margin: 0 auto; box-shadow: 0 0 8px rgba(0,0,0,0.05); overflow: hidden; }
         
-        /* Container cuộn ngang trên điện thoại */
         .table-responsive-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 5px; }
         .table-responsive-wrapper table { min-width: 700px; }
 
-        /* Tiêu đề & Thông tin Header */
         .header-title { text-align: center; font-weight: bold; font-size: 17px; margin-bottom: 8px; text-transform: uppercase; }
         .header-table { width: 100%; border: none !important; margin-bottom: 8px; border-collapse: collapse; min-width: 700px; }
         .header-table td { border: none !important; vertical-align: bottom; font-size: 12px; padding: 3px 0 !important; }
@@ -24,7 +22,6 @@
         .section-title { font-size: 12px; margin: 4px 0 6px 0; font-weight: normal; }
         .section-subheader { font-weight: bold; font-size: 12px; margin-top: 6px; margin-bottom: 3px; font-style: italic; color: #000; text-align: left; }
         
-        /* Cấu trúc Bảng chuẩn PDF */
         table.data-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid #000; }
         table.data-table th, table.data-table td { border: 1px solid #000 !important; padding: 3px 4px !important; vertical-align: middle; font-size: 11.5px !important; word-wrap: break-word; }
         table.data-table th { background-color: #f2f2f2 !important; text-align: center; font-weight: bold; }
@@ -32,7 +29,6 @@
         .text-left-label { text-align: left; padding-left: 5px !important; font-weight: bold; }
         .text-left-sublabel { text-align: left; padding-left: 12px !important; font-weight: normal; }
         
-        /* Cấu hình ô Nhập liệu / Công thức */
         table.data-table input { 
             width: 100%; min-width: 0 !important; max-width: 100% !important; border: none; background: transparent; text-align: right; 
             font-size: 11.5px !important; color: #000; padding: 0 2px; font-family: 'Times New Roman', Times, serif; 
@@ -43,7 +39,6 @@
         .input-yellow { background-color: #fff9c4 !important; }
         .formula-cell { background-color: transparent !important; font-weight: bold; color: #000; }
         
-        /* Giải pháp */
         .solution-container { display: flex; flex-direction: column; width: 100%; gap: 10px; margin-top: 4px; }
         .solution-col { width: 100%; }
         .textarea-box { 
@@ -53,36 +48,30 @@
         }
         .textarea-box:focus { background-color: #fffde7; outline: 1px solid #ffb300; }
         
-        /* Chữ ký */
         .footer-signature-table { width: 100%; border: none !important; margin-top: 15px; border-collapse: collapse; min-width: 700px; }
         .footer-signature-table td { border: none !important; text-align: center; padding: 2px !important; }
         
-        /* Nút In */
         .btn-download { background-color: #000; color: #fff; font-weight: bold; padding: 12px; border: none; border-radius: 4px; width: 100%; margin-top: 20px; font-size: 14px; cursor: pointer; }
         .mobile-hint { text-align: center; font-size: 10px; color: #e65100; margin-bottom: 5px; font-style: italic; }
 
-        /* ================= CẤU HÌNH IN (CHUYỂN SANG KHỔ A4 DỌC) ================= */
+        /* ================= CẤU HÌNH IN (A4 DỌC) ================= */
         @media print {
             @page { size: A4 portrait; margin: 10mm 8mm; }
             body, html { width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; background-color: #fff; overflow-x: hidden !important; }
             .page-wrapper { width: 100% !important; max-width: 100% !important; box-shadow: none; padding: 0; margin: 0; border: none; overflow: hidden !important; }
             
-            /* Gỡ bỏ tính năng cuộn ngang khi in và ép cố định 100% */
             .table-responsive-wrapper { overflow: visible !important; width: 100% !important; margin-bottom: 4px; }
             table.data-table, .header-table, .footer-signature-table { table-layout: fixed !important; width: 100% !important; max-width: 100% !important; min-width: 100% !important; }
             
-            /* Giữ 2 box giải pháp xếp chồng lên nhau cho vừa khổ dọc */
             .solution-container { display: flex; flex-direction: column !important; gap: 8px; }
             .solution-col { min-width: 0 !important; width: 100% !important; }
 
-            /* Font size và padding thu nhỏ để vừa 8 cột vào bề ngang hẹp của A4 Dọc */
             table.data-table th, table.data-table td { padding: 1px 2px !important; font-size: 9px !important; overflow: hidden; word-wrap: break-word; }
             table.data-table input { font-size: 9px !important; padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; -webkit-appearance: none !important; color: #000 !important; }
             
             .header-table td, .textarea-box { font-size: 11px !important; }
             .footer-signature-table td { font-size: 11px !important; }
 
-            /* Xóa nền vàng khi in */
             .input-yellow, .textarea-box { background-color: transparent !important; border: none !important; }
             .formula-cell { background-color: transparent !important; }
 
@@ -97,7 +86,6 @@
     <div class="hide-on-print mobile-hint">💡 Gợi ý: Vuốt sang ngang để nhập số liệu vào các cột bên phải.</div>
     
     <div id="capture-area">
-        <!-- TIÊU ĐỀ -->
         <div style="position: relative;">
             <div class="header-title">KẾ HOẠCH LÀM VIỆC CỦA TÔI</div>
             <div class="hide-on-print" style="position: absolute; right: 0; top: 0; font-style: italic; font-size: 11px; background-color: #fff9c4; padding: 2px 4px;">Nhập số vào ô vàng</div>
@@ -124,10 +112,8 @@
             </table>
         </div>
         
-        <!-- MỤC I -->
         <div class="section-title"><strong>I. MỤC TIÊU</strong> – "Những gì chúng ta đạt được, là những gì chúng ta lập kế hoạch để đạt được."</div>
         
-        <!-- BẢNG 1 (8 cột) -->
         <div class="section-subheader">Mục tiêu CÁ NHÂN kinh doanh 6 tháng tiếp theo</div>
         <div class="table-responsive-wrapper">
             <table class="data-table">
@@ -181,7 +167,7 @@
                         <td><input type="number" id="p_hddl_3" value="5" class="input-yellow"></td>
                         <td><input type="number" id="p_hddl_4" value="4" class="input-yellow"></td>
                         <td><input type="number" id="p_hddl_5" value="5" class="input-yellow"></td>
-                        <td><input type="number" id="p_hddl_fixed" value="6" readonly class="formula-cell"></td>
+                        <td><input type="number" id="p_hddl_fixed" value="6" class="input-yellow"></td>
                     </tr>
                     <tr>
                         <td class="text-left-label">Số hợp đồng</td>
@@ -197,7 +183,6 @@
             </table>
         </div>
 
-        <!-- BẢNG 2 (7 cột) -->
         <div class="section-subheader">Kế hoạch tuyển dụng hằng tháng</div>
         <div class="table-responsive-wrapper">
             <table class="data-table">
@@ -284,7 +269,6 @@
             </table>
         </div>
 
-        <!-- BẢNG 3 (8 Cột) -->
         <div class="section-subheader">Mục tiêu ĐỘI NHÓM kinh doanh 6 tháng tiếp theo</div>
         <div class="table-responsive-wrapper">
             <table class="data-table">
@@ -374,7 +358,6 @@
             </table>
         </div>
 
-        <!-- PHẦN II -->
         <div style="font-size: 12px; font-weight: bold; margin-top: 6px; margin-bottom: 2px;">II. Giải pháp:</div>
         <div class="solution-container">
             <div class="solution-col">
@@ -387,7 +370,6 @@
             </div>
         </div>
 
-        <!-- CHỮ KÝ ĐÃ ĐƯỢC CHỈNH SỬA -->
         <div class="table-responsive-wrapper">
             <table class="footer-signature-table">
                 <tr>
@@ -417,39 +399,70 @@ function autoResizeTextarea(element) {
 
 function calculateAll() {
     try {
-        // --- Bảng 1 ---
-        let p_dl_sum = 0; let p_size_sum = 0; let p_shd_sum = 0;
+        // ==========================================
+        // CÔNG THỨC BẢNG 1: MỤC TIÊU CÁ NHÂN
+        // ==========================================
+        let p_dl_sum = 0; 
+        let p_size_sum = 0; 
+        let p_shd_sum = 0;
+        
         for(let i = 0; i < 6; i++) {
-            let dl = parseFloat(document.getElementById(`p_dl_${i}`).value) || 0;
-            let size = parseFloat(document.getElementById(`p_size_${i}`).value) || 0;
-            let hddl = parseFloat(document.getElementById(`p_hddl_${i}`).value) || 0;
+            let dl = parseFloat(document.getElementById(`p_dl_${i}`).value) || 0; // =B10
+            let size = parseFloat(document.getElementById(`p_size_${i}`).value) || 0; // =B11
+            let hddl = parseFloat(document.getElementById(`p_hddl_${i}`).value) || 0; // =B12
+            
+            // Số hợp đồng: =B12 * B10
             let shd = dl * hddl; 
             document.getElementById(`p_shd_${i}`).value = shd.toFixed(0);
+            
+            // FYP: =B10 * B11 * B12
             let fyp = dl * size * hddl; 
             document.getElementById(`p_fyp_${i}`).value = Math.round(fyp).toLocaleString('vi-VN');
-            p_dl_sum += dl; p_size_sum += size; p_shd_sum += shd;
+            
+            p_dl_sum += dl; 
+            p_size_sum += size;
+            p_shd_sum += shd;
         }
-        document.getElementById('p_dl_total').value = p_dl_sum.toLocaleString('vi-VN');
-        document.getElementById('p_size_avg').value = Math.round(p_size_sum / 6).toLocaleString('vi-VN');
-        document.getElementById('p_shd_total').value = p_shd_sum.toFixed(0);
-        let h10 = p_dl_sum; let h11 = p_size_sum / 6; let h12 = 6; 
-        document.getElementById('p_fyp_total').value = Math.round(h10 * h12 * h11).toLocaleString('vi-VN');
-
-        // --- Bảng 2 ---
-        let target = parseFloat(document.getElementById('r_target').value) || 0;
-        let rate_hoso = 0.50; let rate_bop = 0.50; let rate_gap = 0.50; let rate_hen = 0.65; let rate_call = 0.40;
-        let plan_hoso = target / rate_hoso; 
-        let plan_bop = plan_hoso / rate_bop;
-        let plan_gap = plan_bop / rate_gap;
-        let plan_hen = plan_gap / rate_hen;
-        let plan_call = plan_hen / rate_call;
-        let plan_week = plan_call / 4; 
         
+        // Kết quả 6 tháng: Bảng 1
+        document.getElementById('p_dl_total').value = p_dl_sum.toLocaleString('vi-VN'); // SUM(B10:G10)
+        document.getElementById('p_size_avg').value = Math.round(p_size_sum / 6).toLocaleString('vi-VN'); // AVERAGE(B11:G11)
+        
+        // Số hợp đồng tổng: =H12*H10 (H12: input fixed, H10: SUM(B10:G10))
+        let p_hddl_fixed = parseFloat(document.getElementById('p_hddl_fixed').value) || 0; 
+        document.getElementById('p_shd_total').value = (p_hddl_fixed * p_dl_sum).toFixed(0);
+        
+        // Total FYP: = H10 * H11 * H12 
+        let avgSize = p_size_sum / 6;
+        document.getElementById('p_fyp_total').value = Math.round(p_dl_sum * avgSize * p_hddl_fixed).toLocaleString('vi-VN');
+
+        // ==========================================
+        // CÔNG THỨC BẢNG 2: KẾ HOẠCH TUYỂN DỤNG
+        // ==========================================
+        let target = parseFloat(document.getElementById('r_target').value) || 0; // =C19
+        
+        // =C19/B20 (Target / 50%)
+        let plan_hoso = target / 0.50; 
         document.getElementById('r_plan_hoso').value = Math.round(plan_hoso).toLocaleString('vi-VN');
+        
+        // =C20/B21 (Hoso / 50%)
+        let plan_bop = plan_hoso / 0.50;
         document.getElementById('r_plan_bop').value = Math.round(plan_bop).toLocaleString('vi-VN');
+        
+        // =C21/B22 (Bop / 50%)
+        let plan_gap = plan_bop / 0.50;
         document.getElementById('r_plan_gap').value = Math.round(plan_gap).toLocaleString('vi-VN');
+        
+        // =C22/B23 (Gap / 65%)
+        let plan_hen = plan_gap / 0.65;
         document.getElementById('r_plan_hen').value = Math.round(plan_hen).toLocaleString('vi-VN');
+        
+        // =C23/B24 (Hen / 40%)
+        let plan_call = plan_hen / 0.40;
         document.getElementById('r_plan_call').value = Math.round(plan_call).toLocaleString('vi-VN');
+        
+        // Cuộc gọi (Tuần) = C24/4
+        let plan_week = plan_call / 4; 
         document.getElementById('r_plan_week').value = plan_week.toFixed(1); 
 
         for(let j = 0; j <= 6; j++) {
@@ -469,33 +482,55 @@ function calculateAll() {
             }
         }
 
-        // --- Bảng 3 ---
-        let prev_tsdl = 0; let t_fyp_sum = 0; let t_dlhd_sum = 0; let t_tlhd_sum = 0; let t_tm_sum = 0; let t_size_sum = 0; let t_hddl_sum = 0;
+        // ==========================================
+        // CÔNG THỨC BẢNG 3: MỤC TIÊU ĐỘI NHÓM
+        // ==========================================
+        let prev_tsdl = 0; 
+        let t_fyp_sum = 0; 
+        let t_dlhd_sum = 0; 
+        let t_tlhd_sum = 0; 
+        let t_tm_sum = 0; 
+        let t_size_sum = 0; 
+        let t_hddl_sum = 0;
+        
         for(let i = 0; i < 6; i++) {
-            let tm = parseFloat(document.getElementById(`t_tm_${i}`).value) || 0;
-            let tlhdStr = document.getElementById(`t_tlhd_${i}`).value || '0';
+            let tm = parseFloat(document.getElementById(`t_tm_${i}`).value) || 0; // B33, C33...
+            let tlhdStr = document.getElementById(`t_tlhd_${i}`).value || '0'; // B31
             let tlhd = parseFloat(tlhdStr.replace('%', '')) / 100;
             if(isNaN(tlhd)) tlhd = 0;
-            let size = parseFloat(document.getElementById(`t_size_${i}`).value) || 0;
-            let hddl = parseFloat(document.getElementById(`t_hddl_${i}`).value) || 0;
+            let size = parseFloat(document.getElementById(`t_size_${i}`).value) || 0; // B34
+            let hddl = parseFloat(document.getElementById(`t_hddl_${i}`).value) || 0; // B35
             
+            // Tổng số đại lý: C32 = B32 + C33 (Cộng dồn tháng trước + tuyển mới)
             let tsdl = (i === 0) ? tm : (prev_tsdl + tm); 
             document.getElementById(`t_tsdl_${i}`).value = tsdl.toLocaleString('vi-VN');
             prev_tsdl = tsdl;
+            
+            // Số đại lý HĐ: = B32 * B31 (Tổng số ĐL * Tỷ lệ HĐ)
             let dlhd = tsdl * tlhd;
             document.getElementById(`t_dlhd_${i}`).value = dlhd.toFixed(0);
+            
+            // FYP: = B30 * B34 * B35 (Số ĐL HĐ * Độ lớn HĐ * Số HĐ/ĐL)
             let fyp = dlhd * size * hddl;
             document.getElementById(`t_fyp_${i}`).value = Math.round(fyp).toLocaleString('vi-VN');
             
-            t_fyp_sum += fyp; t_dlhd_sum += dlhd; t_tlhd_sum += (tlhd * 100); t_tm_sum += tm; t_size_sum += size; t_hddl_sum += hddl;
+            t_fyp_sum += fyp; 
+            t_dlhd_sum += dlhd; 
+            t_tlhd_sum += (tlhd * 100); 
+            t_tm_sum += tm; 
+            t_size_sum += size; 
+            t_hddl_sum += hddl;
         }
-        document.getElementById('t_fyp_total').value = Math.round(t_fyp_sum).toLocaleString('vi-VN');
-        document.getElementById('t_dlhd_total').value = t_dlhd_sum.toFixed(0);
-        document.getElementById('t_tlhd_avg').value = '1'; 
-        document.getElementById('t_tsdl_final').value = '17'; 
-        document.getElementById('t_tm_total').value = '17'; 
-        document.getElementById('t_size_avg').value = '20'; 
-        document.getElementById('t_hddl_avg').value = '2';
+        
+        // Kết quả 6 tháng: Bảng 3
+        document.getElementById('t_fyp_total').value = Math.round(t_fyp_sum).toLocaleString('vi-VN'); // SUM(B29:G29)
+        document.getElementById('t_dlhd_total').value = t_dlhd_sum.toFixed(0); // SUM(B30:G30)
+        document.getElementById('t_tlhd_avg').value = Math.round(t_tlhd_sum / 6) + '%'; // AVERAGE(B31:G31)
+        document.getElementById('t_tsdl_final').value = prev_tsdl.toLocaleString('vi-VN'); // Cột cuối (G32)
+        document.getElementById('t_tm_total').value = t_tm_sum.toLocaleString('vi-VN'); // SUM(B33:G33)
+        document.getElementById('t_size_avg').value = Math.round(t_size_sum / 6).toLocaleString('vi-VN'); // AVERAGE(B34:G34)
+        document.getElementById('t_hddl_avg').value = (t_hddl_sum / 6).toFixed(1); // AVERAGE(B35:G35)
+        
     } catch (e) {
         console.error("Lỗi liên kết tính toán:", e);
     }

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kế Hoạch Làm Việc Dr.MOA - Bản Chuẩn</title>
+    <title>Kế Hoạch Làm Việc Dr.MOA - Bản Chuẩn A4 Dọc</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
         /* ================= GIAO DIỆN MÀN HÌNH (TỐI ƯU MOBILE & DESKTOP) ================= */
         body { background-color: #f3f4f6; padding: 10px; font-family: 'Times New Roman', Times, serif; color: #000; font-size: 11.5px; }
-        .page-wrapper { background: #fff; padding: 15px 20px; border-radius: 4px; max-width: 1060px; margin: 0 auto; box-shadow: 0 0 8px rgba(0,0,0,0.05); overflow: hidden; }
+        .page-wrapper { background: #fff; padding: 15px 20px; border-radius: 4px; max-width: 800px; margin: 0 auto; box-shadow: 0 0 8px rgba(0,0,0,0.05); overflow: hidden; }
         
         /* Container cuộn ngang trên điện thoại */
         .table-responsive-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 5px; }
-        .table-responsive-wrapper table { min-width: 850px; }
+        .table-responsive-wrapper table { min-width: 700px; }
 
         /* Tiêu đề & Thông tin Header */
         .header-title { text-align: center; font-weight: bold; font-size: 17px; margin-bottom: 8px; text-transform: uppercase; }
-        .header-table { width: 100%; border: none !important; margin-bottom: 8px; border-collapse: collapse; min-width: 850px; }
+        .header-table { width: 100%; border: none !important; margin-bottom: 8px; border-collapse: collapse; min-width: 700px; }
         .header-table td { border: none !important; vertical-align: bottom; font-size: 12px; padding: 3px 0 !important; }
         .input-underline { border: none; border-bottom: 1px dotted #000; background: transparent; font-size: 12px; font-family: 'Times New Roman', Times, serif; color: #000; padding-left: 4px; outline: none; }
         
@@ -44,8 +44,8 @@
         .formula-cell { background-color: transparent !important; font-weight: bold; color: #000; }
         
         /* Giải pháp */
-        .solution-container { display: flex; flex-wrap: wrap; width: 100%; gap: 10px; margin-top: 4px; }
-        .solution-col { flex: 1; min-width: 300px; }
+        .solution-container { display: flex; flex-direction: column; width: 100%; gap: 10px; margin-top: 4px; }
+        .solution-col { width: 100%; }
         .textarea-box { 
             width: 100%; border: none !important; font-size: 11.5px !important; padding: 4px 6px; 
             font-family: 'Times New Roman', Times, serif; line-height: 1.35; resize: none; 
@@ -54,29 +54,31 @@
         .textarea-box:focus { background-color: #fffde7; outline: 1px solid #ffb300; }
         
         /* Chữ ký */
-        .footer-signature-table { width: 100%; border: none !important; margin-top: 15px; border-collapse: collapse; min-width: 850px; }
+        .footer-signature-table { width: 100%; border: none !important; margin-top: 15px; border-collapse: collapse; min-width: 700px; }
         .footer-signature-table td { border: none !important; text-align: center; font-size: 12px; font-weight: bold; padding: 2px !important; }
         
         /* Nút In */
         .btn-download { background-color: #000; color: #fff; font-weight: bold; padding: 12px; border: none; border-radius: 4px; width: 100%; margin-top: 20px; font-size: 14px; cursor: pointer; }
         .mobile-hint { text-align: center; font-size: 10px; color: #e65100; margin-bottom: 5px; font-style: italic; }
 
-        /* ================= CẤU HÌNH IN (KHẮC PHỤC TRÀN LỀ & BẢO ĐẢM TỶ LỆ) ================= */
+        /* ================= CẤU HÌNH IN (CHUYỂN SANG KHỔ A4 DỌC) ================= */
         @media print {
-            @page { size: A4 landscape; margin: 8mm 10mm; }
+            /* THAY ĐỔI QUAN TRỌNG: Khổ dọc (portrait) */
+            @page { size: A4 portrait; margin: 10mm 8mm; }
             body, html { width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; background-color: #fff; overflow-x: hidden !important; }
             .page-wrapper { width: 100% !important; max-width: 100% !important; box-shadow: none; padding: 0; margin: 0; border: none; overflow: hidden !important; }
             
             /* Gỡ bỏ tính năng cuộn ngang khi in và ép cố định 100% */
             .table-responsive-wrapper { overflow: visible !important; width: 100% !important; margin-bottom: 4px; }
-            table.data-table { table-layout: fixed !important; width: 100% !important; max-width: 100% !important; }
+            table.data-table, .header-table, .footer-signature-table { table-layout: fixed !important; width: 100% !important; max-width: 100% !important; min-width: 100% !important; }
             
-            .solution-container { display: flex; flex-wrap: nowrap !important; gap: 15px; }
-            .solution-col { min-width: 0 !important; }
+            /* Giữ 2 box giải pháp xếp chồng lên nhau cho vừa khổ dọc */
+            .solution-container { display: flex; flex-direction: column !important; gap: 8px; }
+            .solution-col { min-width: 0 !important; width: 100% !important; }
 
-            /* Font size và padding tối ưu cho in A4 */
-            table.data-table th, table.data-table td { padding: 2px !important; font-size: 10px !important; overflow: hidden; word-wrap: break-word; }
-            table.data-table input { font-size: 10px !important; padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; -webkit-appearance: none !important; color: #000 !important; }
+            /* Font size và padding thu nhỏ để vừa 8 cột vào bề ngang hẹp của A4 Dọc */
+            table.data-table th, table.data-table td { padding: 1px 2px !important; font-size: 9px !important; overflow: hidden; word-wrap: break-word; }
+            table.data-table input { font-size: 9px !important; padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; -webkit-appearance: none !important; color: #000 !important; }
             
             .header-table td, .footer-signature-table td, .textarea-box { font-size: 11px !important; }
 
@@ -95,6 +97,7 @@
     <div class="hide-on-print mobile-hint">💡 Gợi ý: Vuốt sang ngang để nhập số liệu vào các cột bên phải.</div>
     
     <div id="capture-area">
+        <!-- TIÊU ĐỀ -->
         <div style="position: relative;">
             <div class="header-title">KẾ HOẠCH LÀM VIỆC CỦA TÔI</div>
             <div class="hide-on-print" style="position: absolute; right: 0; top: 0; font-style: italic; font-size: 11px; background-color: #fff9c4; padding: 2px 4px;">Nhập số vào ô vàng</div>
@@ -121,8 +124,10 @@
             </table>
         </div>
         
+        <!-- MỤC I -->
         <div class="section-title"><strong>I. MỤC TIÊU</strong> – "Những gì chúng ta đạt được, là những gì chúng ta lập kế hoạch để đạt được."</div>
         
+        <!-- BẢNG 1 (8 cột) -->
         <div class="section-subheader">Mục tiêu CÁ NHÂN kinh doanh 6 tháng tiếp theo</div>
         <div class="table-responsive-wrapper">
             <table class="data-table">
@@ -192,6 +197,7 @@
             </table>
         </div>
 
+        <!-- BẢNG 2 (7 cột) -->
         <div class="section-subheader">Kế hoạch tuyển dụng hằng tháng</div>
         <div class="table-responsive-wrapper">
             <table class="data-table">
@@ -278,6 +284,7 @@
             </table>
         </div>
 
+        <!-- BẢNG 3 (8 Cột) -->
         <div class="section-subheader">Mục tiêu ĐỘI NHÓM kinh doanh 6 tháng tiếp theo</div>
         <div class="table-responsive-wrapper">
             <table class="data-table">
@@ -367,6 +374,7 @@
             </table>
         </div>
 
+        <!-- PHẦN II -->
         <div style="font-size: 12px; font-weight: bold; margin-top: 6px; margin-bottom: 2px;">II. Giải pháp:</div>
         <div class="solution-container">
             <div class="solution-col">
@@ -379,6 +387,7 @@
             </div>
         </div>
 
+        <!-- CHỮ KÝ -->
         <div class="table-responsive-wrapper">
             <table class="footer-signature-table">
                 <tr>
@@ -386,8 +395,8 @@
                     <td style="width: 50%;">Nhà tuyển dụng/AD</td>
                 </tr>
                 <tr>
-                    <td style="height: 60px; vertical-align: bottom; font-weight: normal; font-style: italic;">(kí tên)</td>
-                    <td style="height: 60px;"></td>
+                    <td style="height: 50px; vertical-align: bottom; font-weight: normal; font-style: italic;">(kí tên)</td>
+                    <td style="height: 50px;"></td>
                 </tr>
             </table>
         </div>

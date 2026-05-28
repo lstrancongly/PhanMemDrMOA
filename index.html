@@ -2,83 +2,85 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kế Hoạch Làm Việc Dr.MOA - Bản In Chuyên Nghiệp</title>
-    <!-- Bootstrap 5 cho hệ thống lưới và định dạng cơ bản -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kế Hoạch Làm Việc Dr.MOA - Mobile PDF</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-        /* ================= GIAO DIỆN HIỂN THỊ TRÊN MÀN HÌNH ================= */
-        body { background-color: #f3f4f6; padding: 10px; font-family: 'Times New Roman', Times, serif; color: #000; font-size: 12px; }
-        .page-wrapper { background: #fff; padding: 15px 25px; border-radius: 4px; max-width: 1060px; margin: 0 auto; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
+        /* ================= GIAO DIỆN MÀN HÌNH (TỐI ƯU MOBILE) ================= */
+        body { background-color: #f3f4f6; padding: 10px; font-family: 'Times New Roman', Times, serif; color: #000; font-size: 11.5px; }
+        .page-wrapper { background: #fff; padding: 12px 15px; border-radius: 4px; max-width: 1060px; margin: 0 auto; box-shadow: 0 0 8px rgba(0,0,0,0.05); overflow: hidden; }
         
-        /* Cấu trúc tiêu đề 2x2 */
-        .header-table { width: 100%; border: none !important; margin-bottom: 8px; border-collapse: collapse; }
-        .header-table td { border: none !important; vertical-align: bottom; font-size: 12px; }
-        .input-underline { border: none; border-bottom: 1px dotted #000; background: transparent; font-size: 12px; font-family: 'Times New Roman', Times, serif; color: #000; padding-left: 4px; }
+        /* Container cuộn ngang cho bảng trên điện thoại */
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Cuộn mượt trên iOS */
+            margin-bottom: 4px;
+        }
         
-        /* Cấu trúc bảng tính */
-        .section-subheader { font-weight: bold; font-size: 13px; margin-top: 6px; margin-bottom: 3px; font-style: italic; color: #000; }
-        table.data-table { width: 100%; border-collapse: collapse; margin-bottom: 5px; table-layout: fixed; }
-        table.data-table th, table.data-table td { border: 1px solid #000 !important; padding: 2px 3px !important; vertical-align: middle; font-size: 12px !important; }
+        /* Ép bảng có chiều rộng tối thiểu để không bị bẹp dúm trên điện thoại */
+        .table-responsive-wrapper table {
+            min-width: 850px; 
+        }
+
+        /* Tiêu đề & Header */
+        .header-table { width: 100%; border: none !important; margin-bottom: 5px; border-collapse: collapse; min-width: 850px; }
+        .header-table td { border: none !important; vertical-align: bottom; font-size: 11.5px; padding: 2px 0 !important; }
+        .input-underline { border: none; border-bottom: 1px dotted #000; background: transparent; font-size: 11.5px; font-family: 'Times New Roman', Times, serif; color: #000; padding-left: 4px; }
+        
+        .section-subheader { font-weight: bold; font-size: 12px; margin-top: 4px; margin-bottom: 2px; font-style: italic; color: #000; }
+        
+        /* Bảng dữ liệu */
+        table.data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        table.data-table th, table.data-table td { border: 1px solid #000 !important; padding: 2px 3px !important; vertical-align: middle; font-size: 11.5px !important; }
         table.data-table th { background-color: #f2f2f2 !important; text-align: center; font-weight: bold; }
         
-        /* Căn lề nhãn (trái) và số liệu (phải) */
         .text-left-label { text-align: left; padding-left: 5px !important; font-weight: normal; }
-        table.data-table input { width: 100%; border: none; background: transparent; text-align: right; font-size: 12px !important; color: #000; padding-right: 2px; font-family: 'Times New Roman', Times, serif; }
+        table.data-table input { width: 100%; border: none; background: transparent; text-align: right; font-size: 11.5px !important; color: #000; padding-right: 2px; font-family: 'Times New Roman', Times, serif; }
         table.data-table input:focus { outline: 1px solid #ffb300; }
         
-        /* Lớp màu Vàng cho ô nhập liệu (Hiển thị trên màn hình) */
         .input-yellow { background-color: #fff9c4 !important; border-radius: 1px; }
-        /* Lớp màu Xám cho ô công thức */
         .formula-cell { background-color: #f1f3f5 !important; font-weight: bold; text-align: right; color: #333; }
         
-        /* Giải pháp tự co giãn */
-        .solution-container { width: 100%; display: table; margin-top: 4px; }
-        .solution-col { display: table-cell; width: 50%; padding-right: 15px; vertical-align: top; }
+        /* Giải pháp (Dạng lưới cho điện thoại) */
+        .solution-container { display: flex; flex-wrap: wrap; width: 100%; gap: 10px; margin-top: 2px; }
+        .solution-col { flex: 1; min-width: 300px; }
         .textarea-box { 
-            width: 100%; border: none !important; font-size: 12px !important; padding: 4px 4px; 
-            font-family: 'Times New Roman', Times, serif; line-height: 1.35; resize: none; 
-            overflow-y: hidden; box-sizing: border-box; min-height: 48px; 
+            width: 100%; border: none !important; font-size: 11.5px !important; padding: 2px 4px; 
+            font-family: 'Times New Roman', Times, serif; line-height: 1.3; resize: none; 
+            overflow-y: hidden; box-sizing: border-box; min-height: 42px; background-color: #fff9c4;
         }
         
         /* Chữ ký */
-        .footer-signature-table { width: 100%; border: none !important; margin-top: 15px; border-collapse: collapse; }
-        .footer-signature-table td { border: none !important; text-align: center; font-size: 12px; font-weight: bold; }
+        .footer-signature-table { width: 100%; border: none !important; margin-top: 8px; border-collapse: collapse; min-width: 850px; }
+        .footer-signature-table td { border: none !important; text-align: center; font-size: 11.5px; font-weight: bold; padding: 2px !important; }
         
         /* Nút In */
         .btn-download { background-color: #000; color: #fff; font-weight: bold; padding: 12px; border: none; border-radius: 4px; width: 100%; margin-top: 15px; font-size: 14px; cursor: pointer; }
-        .btn-download:hover { background-color: #333; }
+        
+        .mobile-hint { text-align: center; font-size: 10px; color: #e65100; margin-bottom: 5px; font-style: italic; }
 
-
-        /* ================= CẤU HÌNH ĐẶC BIỆT KHI IN (MEDIA PRINT) ================= */
+        /* ================= CẤU HÌNH ĐẶC BIỆT KHI IN (MOBILE & DESKTOP) ================= */
         @media print {
-            /* Xóa màu nền xám của web, dùng nền trắng tinh cho giấy */
-            body { background-color: #fff; padding: 0; margin: 0; }
-            .page-wrapper { box-shadow: none; padding: 0; margin: 0; max-width: 100%; border: none; }
+            /* Ép trình duyệt di động render trang theo kích thước Desktop để thu nhỏ vừa khổ A4 Ngang */
+            body, html { width: 1050px !important; min-width: 1050px !important; margin: 0; padding: 0; background-color: #fff; }
+            .page-wrapper { width: 1050px !important; box-shadow: none; padding: 0; margin: 0; border: none; }
             
-            /* Tự động định dạng khổ giấy A4 Ngang và Căn lề chuẩn */
             @page { 
                 size: A4 landscape; 
-                margin: 10mm 12mm 10mm 12mm; /* Lề: Trên, Phải, Dưới, Trái */
+                margin: 8mm 10mm 8mm 10mm;
             }
 
-            /* TẨY MÀU VÀNG: Các ô nhập liệu sẽ tự động trở thành trong suốt khi in */
-            .input-yellow { 
-                background-color: transparent !important; 
-                border: none !important; 
-            }
-            
-            /* Các ô công thức vẫn có thể giữ màu xám nhạt nhẹ hoặc làm trong suốt tùy bạn, ở đây làm trong suốt cho sạch bản in */
-            .formula-cell { 
-                background-color: transparent !important; 
-            }
+            /* Hủy thanh cuộn trên bản in */
+            .table-responsive-wrapper { overflow: visible !important; width: 100% !important; margin-bottom: 2px; }
+            .table-responsive-wrapper table { min-width: 100% !important; width: 100% !important; }
+            .solution-container { display: flex; flex-wrap: nowrap !important; }
 
-            /* Ẩn nút In và các văn bản chỉ dẫn không cần thiết trên bản giấy */
-            .btn-download { display: none !important; }
-            .hide-on-print { display: none !important; }
+            .input-yellow, .textarea-box { background-color: transparent !important; border: none !important; }
+            .formula-cell { background-color: transparent !important; }
 
-            /* Ẩn các ký tự gợi ý (placeholder) khi in để tránh rác bản in */
+            .btn-download, .hide-on-print, .mobile-hint { display: none !important; }
             input::placeholder, textarea::placeholder { color: transparent !important; }
         }
     </style>
@@ -86,292 +88,295 @@
 <body>
 
 <div class="page-wrapper">
-    <!-- VÙNG DỮ LIỆU CHÍNH -->
+    <div class="hide-on-print mobile-hint">💡 Gợi ý: Vuốt sang ngang để nhập số liệu vào các cột bên phải.</div>
+    
     <div id="capture-area">
-        
-        <!-- TIÊU ĐỀ -->
-        <div style="position: relative; margin-bottom: 8px;">
-            <div style="text-align: center; font-weight: bold; font-size: 19px; letter-spacing: 0.3px;">KẾ HOẠCH LÀM VIỆC CỦA TÔI</div>
-            <div class="hide-on-print" style="position: absolute; right: 0; bottom: 0; font-style: italic; font-size: 12px; background-color: #fff9c4; padding: 2px 4px;">Nhập số vào</div>
+        <div style="position: relative; margin-bottom: 4px;">
+            <div style="text-align: center; font-weight: bold; font-size: 18px; letter-spacing: 0.3px;">KẾ HOẠCH LÀM VIỆC CỦA TÔI</div>
+            <div class="hide-on-print" style="position: absolute; right: 0; bottom: 0; font-style: italic; font-size: 11px; background-color: #fff9c4; padding: 2px 4px;">Nhập số vào ô vàng</div>
         </div>
 
-        <table class="header-table" style="margin-bottom: 8px;">
-            <tr>
-                <td style="width: 60%; text-align: left; font-size: 12px; padding-right: 20px !important;">
-                    Quản lý: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 60px);" placeholder="...........................................................................">
-                </td>
-                <td style="width: 40%; text-align: left; font-size: 12px;">
-                    Văn phòng: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 70px);" value="RED+">
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left; font-size: 12px; padding-right: 20px !important; padding-top: 6px !important;">
-                    Nhà tuyển dụng: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 100px);" value="RED+">
-                </td>
-                <td style="text-align: left; font-size: 12px; padding-top: 6px !important;">
-                    Mã nhóm: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 65px);" placeholder="......">
-                </td>
-            </tr>
-        </table>
+        <div class="table-responsive-wrapper">
+            <table class="header-table">
+                <tr>
+                    <td style="width: 60%; text-align: left;">
+                        Quản lý: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 60px);" placeholder="...........................................................................">
+                    </td>
+                    <td style="width: 40%; text-align: left;">
+                        Văn phòng: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 70px);" value="RED+">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        Nhà tuyển dụng: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 100px);" value="RED+">
+                    </td>
+                    <td style="text-align: left;">
+                        Mã nhóm: <input type="text" class="input-underline input-yellow" style="width: calc(100% - 65px);" placeholder="......">
+                    </td>
+                </tr>
+            </table>
+        </div>
         
-        <p class="text-center" style="font-size: 12px; margin: 3px 0;"><strong>I. MỤC TIÊU</strong> – “Những gì chúng ta đạt được, là những gì chúng ta lập kế hoạch để đạt được.”</p>
+        <p class="text-center" style="font-size: 11.5px; margin: 2px 0;"><strong>I. MỤC TIÊU</strong> – “Những gì chúng ta đạt được, là những gì chúng ta lập kế hoạch để đạt được.”</p>
         
-        <!-- BẢNG 1: MỤC TIÊU CÁ NHÂN -->
         <div class="section-subheader">Mục tiêu CÁ NHÂN kinh doanh 6 tháng tiếp theo</div>
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th style="width: 23%;">Chỉ số</th>
-                    <th>M0&M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
-                    <th style="width: 14%;">Kết quả 6 tháng</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-left-label"><strong>FYP</strong></td>
-                    <td><input type="text" id="p_fyp_0" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_fyp_1" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_fyp_2" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_fyp_3" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_fyp_4" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_fyp_5" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_fyp_total" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số đại lý hoạt động</td>
-                    <td><input type="number" id="p_dl_0" value="1" class="input-yellow"></td>
-                    <td><input type="number" id="p_dl_1" value="1" class="input-yellow"></td>
-                    <td><input type="number" id="p_dl_2" value="1" class="input-yellow"></td>
-                    <td><input type="number" id="p_dl_3" value="1" class="input-yellow"></td>
-                    <td><input type="number" id="p_dl_4" value="1" class="input-yellow"></td>
-                    <td><input type="number" id="p_dl_5" value="1" class="input-yellow"></td>
-                    <td><input type="text" id="p_dl_total" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Độ lớn hợp đồng</td>
-                    <td><input type="number" id="p_size_0" value="30" class="input-yellow"></td>
-                    <td><input type="number" id="p_size_1" value="30" class="input-yellow"></td>
-                    <td><input type="number" id="p_size_2" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="p_size_3" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="p_size_4" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="p_size_5" value="20" class="input-yellow"></td>
-                    <td><input type="text" id="p_size_avg" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số hợp đồng/ Đại lý</td>
-                    <td><input type="number" id="p_hddl_0" value="2" class="input-yellow"></td>
-                    <td><input type="number" id="p_hddl_1" value="3" class="input-yellow"></td>
-                    <td><input type="number" id="p_hddl_2" value="4" class="input-yellow"></td>
-                    <td><input type="number" id="p_hddl_3" value="5" class="input-yellow"></td>
-                    <td><input type="number" id="p_hddl_4" value="4" class="input-yellow"></td>
-                    <td><input type="number" id="p_hddl_5" value="5" class="input-yellow"></td>
-                    <td><input type="number" id="p_hddl_fixed" value="6" readonly class="formula-cell"></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label"><strong>Số hợp đồng</strong></td>
-                    <td><input type="text" id="p_shd_0" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_shd_1" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_shd_2" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_shd_3" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_shd_4" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_shd_5" class="formula-cell" readonly></td>
-                    <td><input type="text" id="p_shd_total" class="formula-cell" readonly></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 23%;">Chỉ số</th>
+                        <th>M0&M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
+                        <th style="width: 14%;">Kết quả 6 tháng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left-label"><strong>FYP</strong></td>
+                        <td><input type="text" id="p_fyp_0" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_fyp_1" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_fyp_2" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_fyp_3" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_fyp_4" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_fyp_5" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_fyp_total" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số đại lý hoạt động</td>
+                        <td><input type="number" id="p_dl_0" value="1" class="input-yellow"></td>
+                        <td><input type="number" id="p_dl_1" value="1" class="input-yellow"></td>
+                        <td><input type="number" id="p_dl_2" value="1" class="input-yellow"></td>
+                        <td><input type="number" id="p_dl_3" value="1" class="input-yellow"></td>
+                        <td><input type="number" id="p_dl_4" value="1" class="input-yellow"></td>
+                        <td><input type="number" id="p_dl_5" value="1" class="input-yellow"></td>
+                        <td><input type="text" id="p_dl_total" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Độ lớn hợp đồng</td>
+                        <td><input type="number" id="p_size_0" value="30" class="input-yellow"></td>
+                        <td><input type="number" id="p_size_1" value="30" class="input-yellow"></td>
+                        <td><input type="number" id="p_size_2" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="p_size_3" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="p_size_4" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="p_size_5" value="20" class="input-yellow"></td>
+                        <td><input type="text" id="p_size_avg" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số hợp đồng/ Đại lý</td>
+                        <td><input type="number" id="p_hddl_0" value="2" class="input-yellow"></td>
+                        <td><input type="number" id="p_hddl_1" value="3" class="input-yellow"></td>
+                        <td><input type="number" id="p_hddl_2" value="4" class="input-yellow"></td>
+                        <td><input type="number" id="p_hddl_3" value="5" class="input-yellow"></td>
+                        <td><input type="number" id="p_hddl_4" value="4" class="input-yellow"></td>
+                        <td><input type="number" id="p_hddl_5" value="5" class="input-yellow"></td>
+                        <td><input type="number" id="p_hddl_fixed" value="6" readonly class="formula-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label"><strong>Số hợp đồng</strong></td>
+                        <td><input type="text" id="p_shd_0" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_shd_1" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_shd_2" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_shd_3" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_shd_4" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_shd_5" class="formula-cell" readonly></td>
+                        <td><input type="text" id="p_shd_total" class="formula-cell" readonly></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- BẢNG 2: KẾ HOẠCH TUYỂN DỤNG HẰNG THÁNG -->
         <div class="section-subheader">Kế hoạch tuyển dụng hằng tháng</div>
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th style="width: 23%;">Hoạt động</th>
-                    <th style="width: 12%;">Tỷ lệ thành công</th>
-                    <th style="width: 13%;">Kế hoạch hoạt động</th>
-                    <th style="width: 13%;">Kế hoạch đến tuần</th>
-                    <th style="width: 13%;">Thực tế đến tuần</th>
-                    <th style="width: 13%;">Còn lại</th>
-                    <th style="width: 13%;">Tỷ lệ thực tế</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-left-label"><strong>Số đại lý tuyển dụng được</strong></td>
-                    <td><input type="text" readonly class="formula-cell" value="-"></td>
-                    <td><input type="number" id="r_target" value="2" class="input-yellow"></td>
-                    <td><input type="number" id="r_kt_0" value="0"></td>
-                    <td><input type="number" id="r_tt_0" value="0"></td>
-                    <td><input type="text" id="r_cl_0" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_0" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">Số lượng Hồ sơ UV</td>
-                    <td><input type="text" value="50%" readonly class="formula-cell"></td>
-                    <td><input type="text" id="r_plan_hoso" class="formula-cell" readonly></td>
-                    <td><input type="number" id="r_kt_1" value="0"></td>
-                    <td><input type="number" id="r_tt_1" value="0"></td>
-                    <td><input type="text" id="r_cl_1" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_1" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">Số lần trình bày BOP</td>
-                    <td><input type="text" value="50%" readonly class="formula-cell"></td>
-                    <td><input type="text" id="r_plan_bop" class="formula-cell" readonly></td>
-                    <td><input type="number" id="r_kt_2" value="0"></td>
-                    <td><input type="number" id="r_tt_2" value="0"></td>
-                    <td><input type="text" id="r_cl_2" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_2" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">Số ứng viên gặp</td>
-                    <td><input type="text" value="50%" readonly class="formula-cell"></td>
-                    <td><input type="text" id="r_plan_gap" class="formula-cell" readonly></td>
-                    <td><input type="number" id="r_kt_3" value="0"></td>
-                    <td><input type="number" id="r_tt_3" value="0"></td>
-                    <td><input type="text" id="r_cl_3" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_3" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">Số cuộc hẹn</td>
-                    <td><input type="text" value="65%" readonly class="formula-cell"></td>
-                    <td><input type="text" id="r_plan_hen" class="formula-cell" readonly></td>
-                    <td><input type="number" id="r_kt_4" value="0"></td>
-                    <td><input type="number" id="r_tt_4" value="0"></td>
-                    <td><input type="text" id="r_cl_4" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_4" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">Số cuộc gọi (Tháng)</td>
-                    <td><input type="text" value="40%" readonly class="formula-cell"></td>
-                    <td><input type="text" id="r_plan_call" class="formula-cell" readonly></td>
-                    <td><input type="number" id="r_kt_5" value="0"></td>
-                    <td><input type="number" id="r_tt_5" value="0"></td>
-                    <td><input type="text" id="r_cl_5" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_5" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">Số cuộc gọi (Tuần)</td>
-                    <td><input type="text" readonly class="formula-cell" value="-"></td>
-                    <td><input type="text" readonly class="formula-cell" id="r_plan_week"></td>
-                    <td><input type="number" id="r_kt_6" value="0"></td>
-                    <td><input type="number" id="r_tt_6" value="0"></td>
-                    <td><input type="text" id="r_cl_6" class="formula-cell" readonly></td>
-                    <td><input type="text" id="r_tl_6" class="formula-cell" readonly></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 23%;">Hoạt động</th>
+                        <th style="width: 12%;">Tỷ lệ TC</th>
+                        <th style="width: 13%;">Kế hoạch HĐ</th>
+                        <th style="width: 13%;">KH đến tuần</th>
+                        <th style="width: 13%;">TT đến tuần</th>
+                        <th style="width: 13%;">Còn lại</th>
+                        <th style="width: 13%;">Tỷ lệ TT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left-label"><strong>Số đại lý tuyển dụng được</strong></td>
+                        <td><input type="text" readonly class="formula-cell" value="-"></td>
+                        <td><input type="number" id="r_target" value="2" class="input-yellow"></td>
+                        <td><input type="number" id="r_kt_0" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_0" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_0" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_0" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">Số lượng Hồ sơ UV</td>
+                        <td><input type="text" value="50%" readonly class="formula-cell"></td>
+                        <td><input type="text" id="r_plan_hoso" class="formula-cell" readonly></td>
+                        <td><input type="number" id="r_kt_1" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_1" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_1" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_1" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">Số lần trình bày BOP</td>
+                        <td><input type="text" value="50%" readonly class="formula-cell"></td>
+                        <td><input type="text" id="r_plan_bop" class="formula-cell" readonly></td>
+                        <td><input type="number" id="r_kt_2" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_2" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_2" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_2" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">Số ứng viên gặp</td>
+                        <td><input type="text" value="50%" readonly class="formula-cell"></td>
+                        <td><input type="text" id="r_plan_gap" class="formula-cell" readonly></td>
+                        <td><input type="number" id="r_kt_3" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_3" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_3" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_3" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">Số cuộc hẹn</td>
+                        <td><input type="text" value="65%" readonly class="formula-cell"></td>
+                        <td><input type="text" id="r_plan_hen" class="formula-cell" readonly></td>
+                        <td><input type="number" id="r_kt_4" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_4" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_4" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_4" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">Số cuộc gọi (Tháng)</td>
+                        <td><input type="text" value="40%" readonly class="formula-cell"></td>
+                        <td><input type="text" id="r_plan_call" class="formula-cell" readonly></td>
+                        <td><input type="number" id="r_kt_5" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_5" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_5" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_5" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">Số cuộc gọi (Tuần)</td>
+                        <td><input type="text" readonly class="formula-cell" value="-"></td>
+                        <td><input type="text" readonly class="formula-cell" id="r_plan_week"></td>
+                        <td><input type="number" id="r_kt_6" value="0" class="input-yellow"></td>
+                        <td><input type="number" id="r_tt_6" value="0" class="input-yellow"></td>
+                        <td><input type="text" id="r_cl_6" class="formula-cell" readonly></td>
+                        <td><input type="text" id="r_tl_6" class="formula-cell" readonly></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- BẢNG 3: MỤC TIÊU ĐỘI NHÓM -->
         <div class="section-subheader">Mục tiêu ĐỘI NHÓM kinh doanh 6 tháng tiếp theo</div>
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th style="width: 23%;">Chỉ số</th>
-                    <th>Tháng 1</th><th>Tháng 2</th><th>Tháng 3</th><th>Tháng 4</th><th>Tháng 5</th><th>Tháng 6</th>
-                    <th style="width: 14%;">Kết quả 6 tháng</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-left-label"><strong>FYP</strong></td>
-                    <td><input type="text" id="t_fyp_0" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_fyp_1" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_fyp_2" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_fyp_3" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_fyp_4" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_fyp_5" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_fyp_total" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số đại lý hoạt động</td>
-                    <td><input type="text" id="t_dlhd_0" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_dlhd_1" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_dlhd_2" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_dlhd_3" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_dlhd_4" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_dlhd_5" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_dlhd_total" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Tỷ lệ hoạt động</td>
-                    <td><input type="text" id="t_tlhd_0" value="100%" class="input-yellow"></td>
-                    <td><input type="text" id="t_tlhd_1" value="100%" class="input-yellow"></td>
-                    <td><input type="text" id="t_tlhd_2" value="80%" class="input-yellow"></td>
-                    <td><input type="text" id="t_tlhd_3" value="80%" class="input-yellow"></td>
-                    <td><input type="text" id="t_tlhd_4" value="80%" class="input-yellow"></td>
-                    <td><input type="text" id="t_tlhd_5" value="80%" class="input-yellow"></td>
-                    <td><input type="text" id="t_tlhd_avg" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Tổng số đại lý</td>
-                    <td><input type="text" id="t_tsdl_0" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_tsdl_1" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_tsdl_2" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_tsdl_3" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_tsdl_4" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_tsdl_5" class="formula-cell" readonly></td>
-                    <td><input type="text" id="t_tsdl_final" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số đại lý Tuyển mới</td>
-                    <td><input type="number" id="t_tm_0" value="2" class="input-yellow"></td>
-                    <td><input type="number" id="t_tm_1" value="3" class="input-yellow"></td>
-                    <td><input type="number" id="t_tm_2" value="3" class="input-yellow"></td>
-                    <td><input type="number" id="t_tm_3" value="3" class="input-yellow"></td>
-                    <td><input type="number" id="t_tm_4" value="3" class="input-yellow"></td>
-                    <td><input type="number" id="t_tm_5" value="3" class="input-yellow"></td>
-                    <td><input type="text" id="t_tm_total" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Độ lớn hợp đồng</td>
-                    <td><input type="number" id="t_size_0" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="t_size_1" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="t_size_2" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="t_size_3" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="t_size_4" value="20" class="input-yellow"></td>
-                    <td><input type="number" id="t_size_5" value="20" class="input-yellow"></td>
-                    <td><input type="text" id="t_size_avg" class="formula-cell" readonly></td>
-                </tr>
-                <tr>
-                    <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số hợp đồng/ Đại lý</td>
-                    <td><input type="number" id="t_hddl_0" value="1.8" step="0.1" class="input-yellow"></td>
-                    <td><input type="number" id="t_hddl_1" value="2" step="0.1" class="input-yellow"></td>
-                    <td><input type="number" id="t_hddl_2" value="2" step="0.1" class="input-yellow"></td>
-                    <td><input type="number" id="t_hddl_3" value="2" step="0.1" class="input-yellow"></td>
-                    <td><input type="number" id="t_hddl_4" value="2" step="0.1" class="input-yellow"></td>
-                    <td><input type="number" id="t_hddl_5" value="2" step="0.1" class="input-yellow"></td>
-                    <td><input type="text" id="t_hddl_avg" class="formula-cell" readonly></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 23%;">Chỉ số</th>
+                        <th>Tháng 1</th><th>Tháng 2</th><th>Tháng 3</th><th>Tháng 4</th><th>Tháng 5</th><th>Tháng 6</th>
+                        <th style="width: 14%;">Kết quả 6 tháng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left-label"><strong>FYP</strong></td>
+                        <td><input type="text" id="t_fyp_0" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_fyp_1" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_fyp_2" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_fyp_3" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_fyp_4" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_fyp_5" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_fyp_total" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số đại lý hoạt động</td>
+                        <td><input type="text" id="t_dlhd_0" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_dlhd_1" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_dlhd_2" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_dlhd_3" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_dlhd_4" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_dlhd_5" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_dlhd_total" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Tỷ lệ hoạt động</td>
+                        <td><input type="text" id="t_tlhd_0" value="100%" class="input-yellow"></td>
+                        <td><input type="text" id="t_tlhd_1" value="100%" class="input-yellow"></td>
+                        <td><input type="text" id="t_tlhd_2" value="80%" class="input-yellow"></td>
+                        <td><input type="text" id="t_tlhd_3" value="80%" class="input-yellow"></td>
+                        <td><input type="text" id="t_tlhd_4" value="80%" class="input-yellow"></td>
+                        <td><input type="text" id="t_tlhd_5" value="80%" class="input-yellow"></td>
+                        <td><input type="text" id="t_tlhd_avg" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Tổng số đại lý</td>
+                        <td><input type="text" id="t_tsdl_0" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_tsdl_1" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_tsdl_2" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_tsdl_3" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_tsdl_4" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_tsdl_5" class="formula-cell" readonly></td>
+                        <td><input type="text" id="t_tsdl_final" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số đại lý Tuyển mới</td>
+                        <td><input type="number" id="t_tm_0" value="2" class="input-yellow"></td>
+                        <td><input type="number" id="t_tm_1" value="3" class="input-yellow"></td>
+                        <td><input type="number" id="t_tm_2" value="3" class="input-yellow"></td>
+                        <td><input type="number" id="t_tm_3" value="3" class="input-yellow"></td>
+                        <td><input type="number" id="t_tm_4" value="3" class="input-yellow"></td>
+                        <td><input type="number" id="t_tm_5" value="3" class="input-yellow"></td>
+                        <td><input type="text" id="t_tm_total" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Độ lớn hợp đồng</td>
+                        <td><input type="number" id="t_size_0" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="t_size_1" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="t_size_2" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="t_size_3" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="t_size_4" value="20" class="input-yellow"></td>
+                        <td><input type="number" id="t_size_5" value="20" class="input-yellow"></td>
+                        <td><input type="text" id="t_size_avg" class="formula-cell" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left-label">&nbsp;&nbsp;&nbsp;&nbsp;- Số hợp đồng/ Đại lý</td>
+                        <td><input type="number" id="t_hddl_0" value="1.8" step="0.1" class="input-yellow"></td>
+                        <td><input type="number" id="t_hddl_1" value="2" step="0.1" class="input-yellow"></td>
+                        <td><input type="number" id="t_hddl_2" value="2" step="0.1" class="input-yellow"></td>
+                        <td><input type="number" id="t_hddl_3" value="2" step="0.1" class="input-yellow"></td>
+                        <td><input type="number" id="t_hddl_4" value="2" step="0.1" class="input-yellow"></td>
+                        <td><input type="number" id="t_hddl_5" value="2" step="0.1" class="input-yellow"></td>
+                        <td><input type="text" id="t_hddl_avg" class="formula-cell" readonly></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- PHẦN II: GIẢI PHÁP -->
-        <div style="font-size: 12px; font-weight: bold; margin-top: 4px; margin-bottom: 2px;">II. Giải pháp:</div>
+        <div style="font-size: 11.5px; font-weight: bold; margin-top: 3px; margin-bottom: 1px;">II. Giải pháp:</div>
         <div class="solution-container">
             <div class="solution-col">
-                <div style="font-size: 11.5px; font-weight: bold; margin-bottom: 1px;">• Will – Hoạt động SMART ( 3 hoạt động cụ thể đầu tiên )</div>
-                <textarea class="textarea-box auto-resize input-yellow" oninput="autoResizeTextarea(this)">- Tuyển dụng&#10;- Bán hàng&#10;- Huấn luyện và đào tạo, tổ chức sự kiện</textarea>
+                <div style="font-size: 11px; font-weight: bold; margin-bottom: 1px;">• Will – Hoạt động SMART ( 3 hoạt động cụ thể đầu tiên )</div>
+                <textarea class="textarea-box auto-resize" oninput="autoResizeTextarea(this)">- Tuyển dụng&#10;- Bán hàng&#10;- Huấn luyện và đào tạo, tổ chức sự kiện</textarea>
             </div>
             <div class="solution-col">
-                <div style="font-size: 11.5px; font-weight: bold; margin-bottom: 1px;">• Option - Giải Pháp (3 ưu tiên hàng đầu )</div>
-                <textarea class="textarea-box auto-resize input-yellow" oninput="autoResizeTextarea(this)">1. Tuyển dụng: 2 NR/tháng, ….....&#10;2. Bán hàng: 3 cases/tháng:…..&#10;3. Huấn luyện, đào tạo, sự kiện: 1 GP/1 tuần, 1 BOP/1 tuần.…</textarea>
+                <div style="font-size: 11px; font-weight: bold; margin-bottom: 1px;">• Option - Giải Pháp (3 ưu tiên hàng đầu )</div>
+                <textarea class="textarea-box auto-resize" oninput="autoResizeTextarea(this)">1. Tuyển dụng: 2 NR/tháng, ….....&#10;2. Bán hàng: 3 cases/tháng:…..&#10;3. Huấn luyện, đào tạo, sự kiện: 1 GP/1 tuần, 1 BOP/1 tuần.…</textarea>
             </div>
         </div>
 
-        <!-- CHỮ KÝ -->
-        <table class="footer-signature-table">
-            <tr>
-                <td style="width: 50%;">Họ và tên Quản lý</td>
-                <td style="width: 50%;">Nhà tuyển dụng/AD</td>
-            </tr>
-            <tr>
-                <td style="height: 35px;"></td>
-                <td style="height: 35px;"></td>
-            </tr>
-        </table>
+        <div class="table-responsive-wrapper">
+            <table class="footer-signature-table">
+                <tr>
+                    <td style="width: 50%;">Họ và tên Quản lý</td>
+                    <td style="width: 50%;">Nhà tuyển dụng/AD</td>
+                </tr>
+                <tr>
+                    <td style="height: 30px;"></td>
+                    <td style="height: 30px;"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <!-- Nút bấm gọi hàm In -->
     <button class="btn-download" onclick="printReport()">IN BÁO CÁO (LƯU DƯỚI DẠNG PDF)</button>
 </div>
 
@@ -383,19 +388,15 @@ function autoResizeTextarea(element) {
 
 function calculateAll() {
     try {
-        // --- BẢNG 1: MỤC TIÊU CÁ NHÂN ---
         let p_dl_sum = 0; let p_size_sum = 0; let p_shd_sum = 0;
         for(let i = 0; i < 6; i++) {
             let dl = parseFloat(document.getElementById(`p_dl_${i}`).value) || 0;
             let size = parseFloat(document.getElementById(`p_size_${i}`).value) || 0;
             let hddl = parseFloat(document.getElementById(`p_hddl_${i}`).value) || 0;
-            
             let shd = dl * hddl; 
             document.getElementById(`p_shd_${i}`).value = shd.toFixed(1).replace('.0', '');
-            
             let fyp = dl * size * hddl; 
             document.getElementById(`p_fyp_${i}`).value = Math.round(fyp).toLocaleString('vi-VN');
-            
             p_dl_sum += dl; p_size_sum += size; p_shd_sum += shd;
         }
         document.getElementById('p_dl_total').value = p_dl_sum.toLocaleString('vi-VN');
@@ -405,10 +406,8 @@ function calculateAll() {
         let h10 = p_dl_sum; let h11 = p_size_sum / 6; let h12 = 6; 
         document.getElementById('p_fyp_total').value = Math.round(h10 * h12 * h11).toLocaleString('vi-VN');
 
-        // --- BẢNG 2: KẾ HOẠCH TUYỂN DỤNG HẰNG THÁNG ---
         let target = parseFloat(document.getElementById('r_target').value) || 0;
         let rate_hoso = 0.50; let rate_bop = 0.50; let rate_gap = 0.50; let rate_hen = 0.65; let rate_call = 0.40;
-
         let plan_hoso = target / rate_hoso; 
         let plan_bop = plan_hoso / rate_bop;
         let plan_gap = plan_bop / rate_gap;
@@ -432,26 +431,20 @@ function calculateAll() {
             document.getElementById(`r_tl_${j}`).value = tl > 0 ? tl.toFixed(1) + '%' : '-';
         }
 
-        // --- BẢNG 3: MỤC TIÊU ĐỘI NHÓM ---
         let prev_tsdl = 0; let t_fyp_sum = 0; let t_dlhd_sum = 0; let t_tlhd_sum = 0; let t_tm_sum = 0; let t_size_sum = 0; let t_hddl_sum = 0;
-
         for(let i = 0; i < 6; i++) {
             let tm = parseFloat(document.getElementById(`t_tm_${i}`).value) || 0;
-            
             let tlhdStr = document.getElementById(`t_tlhd_${i}`).value || '0';
             let tlhd = parseFloat(tlhdStr.replace('%', '')) / 100;
-            document.getElementById(`t_tlhd_${i}`).value = (tlhd * 100) + '%';
-            
+            if(isNaN(tlhd)) tlhd = 0;
             let size = parseFloat(document.getElementById(`t_size_${i}`).value) || 0;
             let hddl = parseFloat(document.getElementById(`t_hddl_${i}`).value) || 0;
             
             let tsdl = (i === 0) ? tm : (prev_tsdl + tm); 
             document.getElementById(`t_tsdl_${i}`).value = tsdl.toLocaleString('vi-VN');
             prev_tsdl = tsdl;
-            
             let dlhd = tsdl * tlhd;
             document.getElementById(`t_dlhd_${i}`).value = dlhd.toFixed(1).replace('.0', '');
-            
             let fyp = dlhd * size * hddl;
             document.getElementById(`t_fyp_${i}`).value = Math.round(fyp).toLocaleString('vi-VN');
             
@@ -469,7 +462,7 @@ function calculateAll() {
     }
 }
 
-document.body.addEventListener('change', calculateAll);
+document.body.addEventListener('input', calculateAll);
 
 window.onload = function() {
     calculateAll();
@@ -477,7 +470,6 @@ window.onload = function() {
 };
 
 function printReport() {
-    // 1. Đồng bộ các giá trị bạn vừa nhập vào HTML để trình duyệt chụp đầy đủ không bị thiếu
     document.querySelectorAll('input').forEach(input => {
         input.setAttribute('value', input.value);
     });
@@ -485,10 +477,9 @@ function printReport() {
         textarea.textContent = textarea.value;
     });
     
-    // 2. Ép chiều cao các ô chữ tự mở rộng
     document.querySelectorAll('.auto-resize').forEach(el => autoResizeTextarea(el));
     
-    // 3. Kích hoạt tính năng In (Print) mặc định của trình duyệt để bạn lưu file PDF
+    // Gọi tính năng in của hệ điều hành
     window.print();
 }
 </script>
